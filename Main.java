@@ -1,16 +1,27 @@
 import java.util.*;
 
 import Factory.*;
+import LunchSet.ChineseStyleLunchSet;
+import LunchSet.LunchSet;
+import LunchSet.WesternStyleLunchSet;
 import Command.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in); 
+        Scanner sc = new Scanner(System.in);
         boolean done = false;
         String input = "";
         Command command;
+        LunchSetFactory lunchSetFactory;
         CommandFactory factory;
         Invoker invoker = new Invoker();
+        ArrayList<LunchSet> lunchSets = new ArrayList<LunchSet>();
+
+        lunchSetFactory = new ChineseStyleLunchSetFactory();
+        lunchSets.add(lunchSetFactory.createLunchSet());
+        lunchSetFactory = new WesternStyleLunchSetFactory();
+        lunchSets.add(lunchSetFactory.createLunchSet());
+
 
         while (!done) {
             // ask user input
@@ -27,10 +38,31 @@ public class Main {
                 System.exit(0);
             } else if ("e".equals(input)) { // input e to edit menu
                 factory = new EditMenuCommandFactory(); // create edit menu command factory
+                factory.setLunchSets(lunchSets);
                 command = factory.createCommand(); // create edit menu command
                 invoker.setCommand(command);
                 invoker.invoke();
+            } else if ("s".equals(input)) {
+                System.out.println(lunchSets.get(0));
+                System.out.println();
+                System.out.println(lunchSets.get(1));
+                System.out.println();
+            } else if ("p".equals(input)) {
+
+            } else if ("c".equals(input)) {
+
+            } else if ("l".equals(input)) {
+
+            } else if ("n".equals(input)) {
+
+            } else if ("d".equals(input)) {
+
+            } else if ("q".equals(input)) {
+
+            } else {
+
             }
+
         }
     }
 }

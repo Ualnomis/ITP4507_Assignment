@@ -3,6 +3,6 @@ import Command.*;
 
 public class EditMenuCommandFactory extends CommandFactory {
     public Command createCommand() {
-        return new EditMenuCommand(receiver);
+        return new EditMenuCommand(super.getReceiver(), super.getLunchSets());
     }
 }
