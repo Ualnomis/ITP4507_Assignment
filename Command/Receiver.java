@@ -37,5 +37,13 @@ public class Receiver {
         System.out.println();
     }
 
-
+    public void showMenu(ArrayList<LunchSet> lunchSets) {
+        for (int i = 0; i < lunchSets.size(); i++) {
+            System.out.println();
+            System.out.println(lunchSets.get(0));
+            System.out.println();
+            System.out.println(lunchSets.get(1));
+            System.out.println();
+        }
+    }
 }

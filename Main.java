@@ -40,13 +40,14 @@ public class Main {
                 factory = new EditMenuCommandFactory(); // create edit menu command factory
                 factory.setLunchSets(lunchSets);
                 command = factory.createCommand(); // create edit menu command
-                invoker.setCommand(command);
-                invoker.invoke();
-            } else if ("s".equals(input)) {
-                System.out.println(lunchSets.get(0));
-                System.out.println();
-                System.out.println(lunchSets.get(1));
-                System.out.println();
+                invoker.setCommand(command); // set the target command to control
+                invoker.invoke(); // execute the command
+            } else if ("s".equals(input)) { // input s to show menu
+                factory = new ShowMenuCommandFactory(); // create edit menu command factory
+                factory.setLunchSets(lunchSets);
+                command = factory.createCommand(); // create edit menu command
+                invoker.setCommand(command); // set the target command to control
+                invoker.invoke(); // execute the command 
             } else if ("p".equals(input)) {
 
             } else if ("c".equals(input)) {
