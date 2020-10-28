@@ -4,6 +4,7 @@ import Factory.*;
 import LunchSet.ChineseStyleLunchSet;
 import LunchSet.LunchSet;
 import LunchSet.WesternStyleLunchSet;
+import Order.Order;
 import Command.*;
 
 public class Main {
@@ -13,15 +14,16 @@ public class Main {
         String input = "";
         Command command;
         LunchSetFactory lunchSetFactory;
-        CommandFactory factory;
+        CommandFactory factory = null;
         Invoker invoker = new Invoker();
+        Receiver receiver = new Receiver();
         ArrayList<LunchSet> lunchSets = new ArrayList<LunchSet>();
+        ArrayList<Order> orders = new ArrayList<Order>();
 
         lunchSetFactory = new ChineseStyleLunchSetFactory();
         lunchSets.add(lunchSetFactory.createLunchSet());
         lunchSetFactory = new WesternStyleLunchSetFactory();
         lunchSets.add(lunchSetFactory.createLunchSet());
-
 
         while (!done) {
             // ask user input
@@ -38,22 +40,16 @@ public class Main {
                 System.exit(0);
             } else if ("e".equals(input)) { // input e to edit menu
                 factory = new EditMenuCommandFactory(); // create edit menu command factory
-                factory.setLunchSets(lunchSets);
-                command = factory.createCommand(); // create edit menu command
-                invoker.setCommand(command); // set the target command to control
-                invoker.invoke(); // execute the command
             } else if ("s".equals(input)) { // input s to show menu
                 factory = new ShowMenuCommandFactory(); // create edit menu command factory
-                factory.setLunchSets(lunchSets);
-                command = factory.createCommand(); // create edit menu command
-                invoker.setCommand(command); // set the target command to control
-                invoker.invoke(); // execute the command 
             } else if ("p".equals(input)) {
-
+                factory = new MakeOrderCommandFactory();
             } else if ("c".equals(input)) {
 
             } else if ("l".equals(input)) {
-
+                for (int i = 0; i < orders.size(); i++) {
+                    System.out.println(orders.get(i));
+                }                
             } else if ("n".equals(input)) {
 
             } else if ("d".equals(input)) {
@@ -61,9 +57,17 @@ public class Main {
             } else if ("q".equals(input)) {
 
             } else {
-
+                System.out.println("Invalid Option!");
             }
 
+            if (factory != null) {
+                factory.setReceiver(receiver);
+                factory.setLunchSets(lunchSets);
+                factory.setOrders(orders);
+                command = factory.createCommand(); // create edit menu command
+                invoker.setCommand(command); // set the target command to control
+                invoker.invoke(); // execute the command
+            }
         }
     }
 }
