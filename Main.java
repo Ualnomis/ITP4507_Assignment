@@ -45,11 +45,9 @@ public class Main {
             } else if ("p".equals(input)) {
                 factory = new MakeOrderCommandFactory();
             } else if ("c".equals(input)) {
-
+                factory = new CompleteOrdersCommandFactory();
             } else if ("l".equals(input)) {
-                for (int i = 0; i < orders.size(); i++) {
-                    System.out.println(orders.get(i));
-                }                
+                factory = new ListOutstandingOrdersCommandFactory();
             } else if ("n".equals(input)) {
 
             } else if ("d".equals(input)) {
@@ -58,6 +56,7 @@ public class Main {
 
             } else {
                 System.out.println("Invalid Option!");
+                factory = null;
             }
 
             if (factory != null) {
@@ -67,6 +66,7 @@ public class Main {
                 command = factory.createCommand(); // create edit menu command
                 invoker.setCommand(command); // set the target command to control
                 invoker.invoke(); // execute the command
+                factory = null;
             }
         }
     }

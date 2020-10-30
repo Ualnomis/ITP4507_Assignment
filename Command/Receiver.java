@@ -104,6 +104,26 @@ public class Receiver {
         Order order = new Order(staffNum, officeLocation, lunchSet, input, side, teaType);
         orders.add(order);
         lunchSet.setAvailableCount(lunchSet.getAvailableCount() - 1);
+        System.out.println("Order Placed");
         System.out.println();
+    }
+
+    public void listOutstandingOrders(ArrayList<Order> orders) {
+        System.out.println();
+        System.out.println("Outstanding Orders");
+        for (int i = 0; i < orders.size(); i++) {
+            if (!(orders.get(i).isOrderCompleted())) {
+                System.out.println(orders.get(i));
+            }
+        }
+        System.out.println();
+    }
+
+    public void listCompleteOrders(ArrayList<Order> orders) {
+        System.out.println();
+        System.out.println("Complete Orders");
+        orders.get(orders.size() - 1).setOrderCompleted(true);
+        System.out.println(orders.remove(orders.size() - 1));
+        System.out.println("Order marked as done");
     }
 }

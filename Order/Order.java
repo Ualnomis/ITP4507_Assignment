@@ -9,10 +9,19 @@ public class Order {
     private String type;
     private String side;
     private String teaType;
+    private boolean orderCompleted;
 
     public String toString() {
         return this.type + ": " + this.staffNum + ", " + this.officeLocation + ", " + lunchSet.getMainDish() + ", "
                 + this.side + ", Chinese Soup" + ", " + this.teaType;
+    }
+
+    public boolean isOrderCompleted() {
+        return orderCompleted;
+    }
+
+    public void setOrderCompleted(boolean orderCompleted) {
+        this.orderCompleted = orderCompleted;
     }
 
     public String getTeaType() {
@@ -70,6 +79,7 @@ public class Order {
         this.staffNum = staffNum;
         this.setOfficeLocation(officeLocation);
         this.lunchSet = lunchSet;
+        this.orderCompleted = false;
     }
 
     public Order(int staffNum, int officeLocation, LunchSet lunchSet, String type) {
@@ -77,6 +87,7 @@ public class Order {
         this.officeLocation = officeLocation;
         this.lunchSet = lunchSet;
         this.type = type;
+        this.orderCompleted = false;
     }
 
     public Order(int staffNum, int officeLocation, LunchSet lunchSet, String type, String side, String teaType) {
@@ -86,6 +97,7 @@ public class Order {
         this.type = type;
         this.side = side;
         this.teaType = teaType;
+        this.orderCompleted = false;
     }
 
     public Order(int staffNum, int officeLocation, LunchSet lunchSet, String type, String teaType) {
@@ -95,5 +107,6 @@ public class Order {
         this.type = type;
         this.teaType = teaType;
         this.side = "";
+        this.orderCompleted = false;
     }
 }
