@@ -32,7 +32,7 @@ $ cd Portfolio
 $ javac *.java
 ```
 
-# Run the program
+### Run the program
 ```
 java Main
 ```
