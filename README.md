@@ -26,12 +26,13 @@ You are required to apply the following patterns in your system design
 6. Mark order as completed
 
 ## Installation
-Setup
+### Setup
 ```
 $ cd Portfolio
 $ javac *.java
 ```
 
+# Run the program
 ```
 java Main
 ```
