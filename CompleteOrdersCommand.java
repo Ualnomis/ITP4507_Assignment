@@ -1,8 +1,5 @@
-package Command;
 
 import java.util.ArrayList;
-
-import Order.Order;
 
 public class CompleteOrdersCommand implements Command {
     private Receiver receiver;

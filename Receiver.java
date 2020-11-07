@@ -1,11 +1,5 @@
-package Command;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import Factory.*;
-import LunchSet.LunchSet;
-import Order.Order;
 
 public class Receiver {
     private String input;
@@ -53,6 +47,7 @@ public class Receiver {
         input = sc.nextLine();
         String teaType = "";
         String side = "";
+        Order order;
         if ("c".equals(input)) {
             lunchSet = lunchSets.get(0);
             if (lunchSet.getAvailableCount() > 0) {
@@ -63,7 +58,12 @@ public class Receiver {
                 } else if ("i".equals(teaType)) {
                     teaType = "Iced Tea";
                 }
-                input = "C";
+                System.out.print("Staff Number:");
+                int staffNum = sc.nextInt();
+                System.out.print("Office Location:");
+                int officeLocation = sc.nextInt();
+                sc.nextLine();
+                order = new ChineseStyleLunchSetOrder(staffNum, officeLocation, lunchSet, false, teaType);
             } else {
                 System.out.println("Sold Out!");
                 return;
@@ -88,7 +88,12 @@ public class Receiver {
                 } else if ("i".equals(teaType)) {
                     teaType = "Iced Tea";
                 }
-                input = "W";
+                System.out.print("Staff Number:");
+                int staffNum = sc.nextInt();
+                System.out.print("Office Location:");
+                int officeLocation = sc.nextInt();
+                sc.nextLine();
+                order = new WesternStyleLunchSetOrder(staffNum, officeLocation, lunchSet, false, side, teaType);
             } else {
                 System.out.println("Sold Out!");
                 return;
@@ -97,11 +102,6 @@ public class Receiver {
             System.out.println("Invalid Option!");
             return;
         }
-        System.out.print("Staff Number:");
-        int staffNum = sc.nextInt();
-        System.out.print("Office Location:");
-        int officeLocation = sc.nextInt();
-        Order order = new Order(staffNum, officeLocation, lunchSet, input, side, teaType);
         orders.add(order);
         lunchSet.setAvailableCount(lunchSet.getAvailableCount() - 1);
         System.out.println("Order Placed");
@@ -122,8 +122,10 @@ public class Receiver {
     public void listCompleteOrders(ArrayList<Order> orders) {
         System.out.println();
         System.out.println("Complete Orders");
-        orders.get(orders.size() - 1).setOrderCompleted(true);
-        System.out.println(orders.remove(orders.size() - 1));
-        System.out.println("Order marked as done");
+        if (orders.size() > 0) {
+            orders.get(0).setOrderCompleted(true);
+            System.out.println(orders.remove(0));
+            System.out.println("Order marked as done");
+        }
     }
 }

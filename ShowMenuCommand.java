@@ -1,9 +1,4 @@
-package Command;
-
 import java.util.ArrayList;
-
-import LunchSet.LunchSet;
-
 public class ShowMenuCommand implements Command {
     private Receiver receiver;
     private ArrayList<LunchSet> lunchSets;

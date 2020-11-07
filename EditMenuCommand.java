@@ -1,8 +1,6 @@
-package Command;
 
 import java.util.*;
 
-import LunchSet.LunchSet;
 
 public class EditMenuCommand implements Command {
     private Receiver receiver;

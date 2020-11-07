@@ -1,8 +1,6 @@
-package Command;
 
 import java.util.ArrayList;
 
-import Order.Order;
 
 public class ListOutstandingOrdersCommand implements Command {
     private Receiver receiver;

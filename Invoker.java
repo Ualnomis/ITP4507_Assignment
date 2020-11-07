@@ -1,5 +1,3 @@
-package Command;
-
 public class Invoker {
     private Command command;
 

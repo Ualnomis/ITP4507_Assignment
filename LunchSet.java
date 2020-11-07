@@ -1,5 +1,3 @@
-package LunchSet;
-
 public abstract class LunchSet {
     private String mainDish;
     private double price;

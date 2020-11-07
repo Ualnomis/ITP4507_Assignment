@@ -1,10 +1,8 @@
-package LunchSet;
-
-public class WesternStyleLunchSet extends LunchSet {
+public class ChineseStyleLunchSet extends LunchSet {
     public String toString() {
-        return "Western Style Business Set Lunch\n"
+        return "Chinese Style Business Set Lunch\n"
             + "main dish: " + super.getMainDish() + "\n"
-            + "with rice/spaghetti/French fries\n"
+            + "with rice, Chinese soup, Chinese tea\n"
             + "price: " + super.getPrice() + "\n"
             + "available count: " + super.getAvailableCount();
     } 

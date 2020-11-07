@@ -1,12 +1,5 @@
 import java.util.*;
 
-import Factory.*;
-import LunchSet.ChineseStyleLunchSet;
-import LunchSet.LunchSet;
-import LunchSet.WesternStyleLunchSet;
-import Order.Order;
-import Command.*;
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -45,15 +38,12 @@ public class Main {
             } else if ("p".equals(input)) {
                 factory = new MakeOrderCommandFactory();
             } else if ("c".equals(input)) {
-                factory = new CompleteOrdersCommandFactory();
             } else if ("l".equals(input)) {
                 factory = new ListOutstandingOrdersCommandFactory();
             } else if ("n".equals(input)) {
 
             } else if ("d".equals(input)) {
-
-            } else if ("q".equals(input)) {
-
+                factory = new CompleteOrdersCommandFactory();
             } else {
                 System.out.println("Invalid Option!");
                 factory = null;
