@@ -13,10 +13,13 @@ import LunchSet.Drink.*;
 import LunchSet.Side.*;
 import LunchSet.Soup.ChineseSoup;
 import LunchSet.Soup.WesternSoup;
+import Memento.OrdersOriginator;
 import Menu.Menu;
 import Order.Order;
 
 public class Receiver {
+    private OrdersOriginator o = new OrdersOriginator();
+    private ArrayList<OrdersOriginator.OrdersMemento> ordersMementos = new ArrayList<OrdersOriginator.OrdersMemento>();
     Scanner sc = new Scanner(System.in);
 
     public void editMenu(ArrayList<Menu> menus) {
@@ -136,7 +139,10 @@ public class Receiver {
         orders.add(order);
         menu.setAvailableCount(menu.getAvailableCount() - 1);
         System.out.println("Order Placed");
+        o.setOrders(orders);
+        ordersMementos.add(o.saveToMemento());
         System.out.println();
+
     }
 
     public void listOutstandingOrders(ArrayList<Order> orders) {
@@ -150,7 +156,7 @@ public class Receiver {
         System.out.println();
     }
 
-    public void listCompleteOrders(ArrayList<Order> orders) {
+    public void completeOrders(ArrayList<Order> orders) {
         System.out.println();
         System.out.println("Complete Orders");
         if (orders.size() > 0) {
@@ -158,6 +164,40 @@ public class Receiver {
             System.out.println(orders.remove(0));
             System.out.println("Order marked as done");
         }
+        o.setOrders(orders);
+        ordersMementos.add(o.saveToMemento());
+
     }
 
+    public void cancelOrders() {
+        ArrayList<Order> orders;
+        ArrayList<Order> findOrders = null;
+        boolean found = false;
+        o.restoreFromMemento(ordersMementos.get(ordersMementos.size() - 1)); // most recent orders
+        orders = o.getOrders(); // 123 234 345 456 567
+
+        int staffNum = sc.nextInt();
+        for (int i = 0; i < orders.size(); i++) {
+            if (staffNum == orders.get(i).getStaffNum()) {
+                found = true;
+            }
+        }
+
+        if (found) {
+            for (int i = 0; i < ordersMementos.size(); i++) {
+                o.restoreFromMemento(ordersMementos.get(i)); // most recent orders
+                findOrders = o.getOrders(); // 123 234 345 456 567
+                System.out.println("chekc find orders = ");
+                for (int j = 0; j < findOrders.size(); j++) {
+                    System.out.print(j + ": [" + findOrders.get(j).getStaffNum() + " ");
+                    if (findOrders.get(findOrders.size() - 1).getStaffNum() == staffNum) {
+                        System.out.println("Found: " + staffNum);
+                    }
+                    System.out.println();
+                }
+            }
+        } else {
+            System.out.println("Not Found");
+        }
+    }
 }

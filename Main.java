@@ -43,6 +43,7 @@ public class Main {
             } else if ("p".equals(input)) {
                 factory = new MakeOrderCommandFactory();
             } else if ("c".equals(input)) {
+                factory = new CancelOrderCommandFactory();
             } else if ("l".equals(input)) {
                 factory = new ListOutstandingOrdersCommandFactory();
             } else if ("n".equals(input)) {
