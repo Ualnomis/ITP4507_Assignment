@@ -6,7 +6,6 @@ import Menu.Menu;
 
 public class EditMenuCommand implements Command {
     private Receiver receiver;
-    private ArrayList<Menu> menus;
 
     public Receiver getReceiver() {
         return receiver;
@@ -21,11 +20,7 @@ public class EditMenuCommand implements Command {
     }
 
     public void execute() {
-        receiver.editMenu(menus);
+        receiver.editMenu();
     }
 
-    public EditMenuCommand(Receiver receiver, ArrayList<Menu> menus) {
-        this.receiver = receiver;
-        this.menus = menus;
-    }
 }

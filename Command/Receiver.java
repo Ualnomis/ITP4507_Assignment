@@ -3,27 +3,42 @@ package Command;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Factory.ChineseStyleLunchSetFactory;
-import Factory.LunchSetFactory;
-import Factory.WesternStyleLunchSetFactory;
-import LunchSet.ChineseStyleLunchSet;
-import LunchSet.LunchSet;
-import LunchSet.WesternStyleLunchSet;
+import Factory.*;
+import LunchSet.*;
 import LunchSet.Drink.*;
 import LunchSet.Side.*;
 import LunchSet.Soup.ChineseSoup;
 import LunchSet.Soup.WesternSoup;
-import Memento.Caretaker;
 import Memento.OrdersOriginator;
 import Menu.Menu;
 import Order.Order;
 
 public class Receiver {
     private OrdersOriginator o = new OrdersOriginator();
-    private ArrayList<OrdersOriginator.OrdersMemento> ordersMementos = new ArrayList<OrdersOriginator.OrderMemento>();
-    Scanner sc = new Scanner(System.in);
+    private ArrayList<OrdersOriginator.OrdersMemento> ordersMementos = new ArrayList<OrdersOriginator.OrdersMemento>();
+    private Scanner sc;
+    private ArrayList<Menu> menus = new ArrayList<Menu>();
+    private MenuFactory menuFactory;
+    private Menu chineseMenu;
+    private Menu westernMenu;
 
-    public void editMenu(ArrayList<Menu> menus) {
+
+    public Receiver() {
+    }
+
+    public Receiver(Scanner sc) {
+        this.sc = sc;
+        menuFactory = new ChineseStyleLunchSetMenuFactory();
+        chineseMenu = menuFactory.createMenu();
+        menus.add(chineseMenu);
+        menuFactory = new WesternStyleLunchSetMenuFactory();
+        westernMenu = menuFactory.createMenu();
+        menus.add(westernMenu);
+        o.setOrders(new ArrayList<Order>());
+        ordersMementos.add(o.saveToMemento());
+    }
+
+    public void editMenu() {
         Menu menu = null;
         System.out.println();
         System.out.println("Edit Menu:");
@@ -50,28 +65,25 @@ public class Receiver {
         }
     }
 
-    public void showMenu(ArrayList<Menu> menus) {
+    public void showMenu() {
         for (int i = 0; i < menus.size(); i++) {
             System.out.println();
-            System.out.println(menus.get(0));
-            System.out.println();
-            System.out.println(menus.get(1));
+            System.out.println(menus.get(i));
             System.out.println();
         }
     }
 
-    public void makeOrder(ArrayList<Menu> menus) {
+    public void makeOrder() {
+        System.out.println();
+        System.out.println("Place Order");
+        System.out.print("Chinese or Western (c | w):");
+        String input = sc.nextLine();
         String teaType = "";
         String side = "";
         Order order;
         Menu menu;
         LunchSetFactory lunchSetFactory;
         LunchSet lunchSet;
-        ArrayList<Order> orders = new ArrayList<Order>(o.getOrders());
-        System.out.println();
-        System.out.println("Place Order");
-        System.out.print("Chinese or Western (c | w):");
-        String input = sc.nextLine();
         if ("c".equals(input)) {
             menu = menus.get(0);
             lunchSetFactory = new ChineseStyleLunchSetFactory();
@@ -88,6 +100,7 @@ public class Receiver {
                 }
                 System.out.print("Staff Number:");
                 int staffNum = sc.nextInt();
+                sc.nextLine();
                 System.out.print("Office Location:");
                 int officeLocation = sc.nextInt();
                 sc.nextLine();
@@ -126,6 +139,7 @@ public class Receiver {
                 }
                 System.out.print("Staff Number:");
                 int staffNum = sc.nextInt();
+                sc.nextLine();
                 System.out.print("Office Location:");
                 int officeLocation = sc.nextInt();
                 sc.nextLine();
@@ -138,15 +152,17 @@ public class Receiver {
             System.out.println("Invalid Option!");
             return;
         }
+        ArrayList<Order> orders = new ArrayList<Order>(o.getOrders());
         orders.add(order);
         menu.setAvailableCount(menu.getAvailableCount() - 1);
         System.out.println("Order Placed");
-        // caretaker.setOrdersMementos(orders);
-        o.saveToMemento(orders);
+        o.setOrders(orders);
+        ordersMementos.add(o.saveToMemento());
         System.out.println();
+
     }
 
-    public void listOutstandingOrders(ArrayList<Order> orders) {
+    public void listOutstandingOrders() {
         System.out.println();
         System.out.println("Outstanding Orders");
         for (int i = 0; i < o.getOrders().size(); i++) {
@@ -158,15 +174,15 @@ public class Receiver {
     }
 
     public void completeOrders() {
-        System.out.println();
         System.out.println("Complete Orders");
         if (o.getOrders().size() > 0) {
             o.getOrders().get(0).setOrderCompleted(true);
             System.out.println(o.getOrders().remove(0));
             System.out.println("Order marked as done");
         }
-        // ordersMementos.add(o.saveToMemento());
-        caretaker.setOrdersMementos(orders);
+        o.setOrders(o.getOrders());
+        ordersMementos.add(o.saveToMemento());
+
     }
 
     public void cancelOrders() {
@@ -179,47 +195,18 @@ public class Receiver {
         for (int i = 0; i < canceledOrders.size(); i++) {
             if (staffNum == canceledOrders.get(i).getStaffNum()) {
                 found = true;
+                System.out.println(canceledOrders.get(i));
+                if (canceledOrders.get(i).getLunchSet() instanceof ChineseStyleLunchSet) {
+                    chineseMenu.setAvailableCount(chineseMenu.getAvailableCount() + 1);
+                } else if (canceledOrders.get(i).getLunchSet() instanceof WesternStyleLunchSet) {
+                    westernMenu.setAvailableCount(westernMenu.getAvailableCount() + 1);
+                }
                 canceledOrders.remove(i);
-                o.saveToMemento(canceledOrders);
+                o.setOrders(canceledOrders);
+                ordersMementos.add(o.saveToMemento());
                 return;
             }
         }
         System.out.println("Staff Number Not Found");
-
-            // // get the orders number until number is end with xxx target order number
-            // for (int i = 0; i < ordersMementos.size(); i++) {
-            //     o.restoreFromMemento(ordersMementos.get(i)); // most recent orders
-            //     findOrders = o.getOrders(); // 123 234 [345] 456 567 --> 123 234 [345]
-            //     for (int j = 0; j < findOrders.size(); j++) {
-            //         // System.out.print(j + ": [" + findOrders.get(j).getStaffNum() + " ");
-            //         if (findOrders.get(findOrders.size() - 1).getStaffNum() == staffNum) {
-            //             // System.out.println("Found: " + staffNum);
-            //             i = ordersMementos.size();
-            //             break;
-            //         }
-            //     }
-            // }
-
-            // // for (int i = 0; i < findOrders.size(); i++) {
-            // //     System.out.println("findOrders = " + findOrders.get(i));
-            // // }
-
-            // // get the number after the target number
-            // boolean foundAfterTarget = false;
-            // for (int i = 0; i < orders.size(); i++) {
-            //     System.out.println("i = " + i);
-            //     System.out.println("orders size = " + orders.size());
-            //     System.out.println("staffNumber = " + orders.get(i).getStaffNum());
-                
-            //     if (orders.get(i).getStaffNum() == staffNum) {
-            //         System.out.println("orders.get(i).getStaffNum() == staffNum");
-            //         foundAfterTarget = true;
-            //     } else if (foundAfterTarget) {
-            //         System.out.println("found after target");
-            //         findOrders.add(orders.get(i));
-            //     }
-            // }
-            // o.setOrders(findOrders);
-            // ordersMementos.add(o.saveToMemento());
     }
 }

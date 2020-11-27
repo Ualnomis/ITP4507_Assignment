@@ -6,19 +6,11 @@ import Order.Order;
 
 public class ListOutstandingOrdersCommand implements Command {
     private Receiver receiver;
-    private ArrayList<Order> orders;
 
     public void execute() {
-        receiver.listOutstandingOrders(orders);
+        receiver.listOutstandingOrders();
     }
 
-    public ArrayList<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
-    }
 
     public Receiver getReceiver() {
         return receiver;
@@ -31,8 +23,7 @@ public class ListOutstandingOrdersCommand implements Command {
     public ListOutstandingOrdersCommand() {
     }
 
-    public ListOutstandingOrdersCommand(Receiver receiver, ArrayList<Order> orders) {
+    public ListOutstandingOrdersCommand(Receiver receiver) {
         this.receiver = receiver;
-        this.orders = orders;
     }
 }
