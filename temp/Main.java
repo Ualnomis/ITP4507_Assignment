@@ -14,13 +14,7 @@ public class Main {
         MenuFactory menuFactory;
         Invoker invoker = new Invoker();
         Receiver receiver = new Receiver(sc);
-        ArrayList<Menu> menus = new ArrayList<Menu>();
-        ArrayList<Order> orders = new ArrayList<Order>();
 
-        menuFactory = new ChineseStyleLunchSetMenuFactory();
-        menus.add(menuFactory.createMenu());
-        menuFactory = new WesternStyleLunchSetMenuFactory();
-        menus.add(menuFactory.createMenu());
 
         for (;;) {
             // ask user input
@@ -54,8 +48,6 @@ public class Main {
             }
 
             if (factory != null) {
-                factory.setOrders(orders);
-                factory.setMenus(menus);
                 command = factory.createCommand(); // create edit menu command
                 invoker.setCommand(command); // set the target command to control
                 invoker.invoke(); // execute the command

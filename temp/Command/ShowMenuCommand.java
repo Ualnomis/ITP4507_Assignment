@@ -6,7 +6,6 @@ import Menu.Menu;
 
 public class ShowMenuCommand implements Command {
     private Receiver receiver;
-    private ArrayList<Menu> menus;
 
     public Receiver getReceiver() {
         return receiver;
@@ -21,11 +20,7 @@ public class ShowMenuCommand implements Command {
     }
 
     public void execute() {
-        receiver.showMenu(menus);
+        receiver.showMenu();
     }
 
-    public ShowMenuCommand(Receiver receiver, ArrayList<Menu> menus) {
-        this.receiver = receiver;
-        this.menus = menus;
-    }
 }

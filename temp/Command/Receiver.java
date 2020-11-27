@@ -38,7 +38,7 @@ public class Receiver {
         ordersMementos.add(o.saveToMemento());
     }
 
-    public void editMenu(ArrayList<Menu> menuss) {
+    public void editMenu() {
         Menu menu = null;
         System.out.println();
         System.out.println("Edit Menu:");
@@ -65,7 +65,7 @@ public class Receiver {
         }
     }
 
-    public void showMenu(ArrayList<Menu> menuss) {
+    public void showMenu() {
         for (int i = 0; i < menus.size(); i++) {
             System.out.println();
             System.out.println(menus.get(i));
@@ -73,7 +73,7 @@ public class Receiver {
         }
     }
 
-    public void makeOrder(ArrayList<Menu> menuss, ArrayList<Order> orderss) {
+    public void makeOrder() {
         System.out.println();
         System.out.println("Place Order");
         System.out.print("Chinese or Western (c | w):");
@@ -162,7 +162,7 @@ public class Receiver {
 
     }
 
-    public void listOutstandingOrders(ArrayList<Order> orderss) {
+    public void listOutstandingOrders() {
         System.out.println();
         System.out.println("Outstanding Orders");
         for (int i = 0; i < o.getOrders().size(); i++) {
@@ -173,8 +173,7 @@ public class Receiver {
         System.out.println();
     }
 
-    public void completeOrders(ArrayList<Order> orderss) {
-        System.out.println();
+    public void completeOrders() {
         System.out.println("Complete Orders");
         if (o.getOrders().size() > 0) {
             o.getOrders().get(0).setOrderCompleted(true);
