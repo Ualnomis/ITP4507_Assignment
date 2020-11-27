@@ -1,9 +1,15 @@
 package Factory;
 
-import Command.CancelOrderCommand;
-import Command.Command;
+import Command.*;
 
 public class CancelOrderCommandFactory extends CommandFactory {
+    public CancelOrderCommandFactory() {
+    }
+
+    public CancelOrderCommandFactory(Receiver receiver) {
+        super.setReceiver(receiver);
+    }
+
     public Command createCommand() {
         return new CancelOrderCommand(super.getReceiver());
     }
