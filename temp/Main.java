@@ -8,7 +8,6 @@ import Order.Order;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        boolean done = false;
         String input = "";
         Command command;
         CommandFactory factory = null;
@@ -23,7 +22,7 @@ public class Main {
         menuFactory = new WesternStyleLunchSetMenuFactory();
         menus.add(menuFactory.createMenu());
 
-        while (!done) {
+        for(;;) {
             // ask user input
             System.out.println("Please enter command: [e | s | p | c | l | n | d | q]");
             System.out.println("e = Edit menu, s = Show menu, p = Place order, c = Cancel order,");
@@ -31,10 +30,8 @@ public class Main {
 
             // get user input
             input = sc.nextLine();
-
             // input q and exit the system
             if ("q".equals(input)) {
-                done = true;
                 System.exit(0);
             } else if ("e".equals(input)) { // input e to edit menu
                 factory = new EditMenuCommandFactory(); // create edit menu command factory

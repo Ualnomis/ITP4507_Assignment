@@ -22,6 +22,7 @@ public class Receiver {
     private Menu chineseMenu;
     private Menu westernMenu;
 
+
     public Receiver() {
     }
 
@@ -33,9 +34,11 @@ public class Receiver {
         menuFactory = new WesternStyleLunchSetMenuFactory();
         westernMenu = menuFactory.createMenu();
         menus.add(westernMenu);
+        o.setOrders(new ArrayList<Order>());
+        ordersMementos.add(o.saveToMemento());
     }
 
-    public void editMenu( ArrayList<Menu> menuss) {
+    public void editMenu(ArrayList<Menu> menuss) {
         Menu menu = null;
         System.out.println();
         System.out.println("Edit Menu:");
@@ -48,13 +51,13 @@ public class Receiver {
         }
         if (menu != null) {
             System.out.print("Enter main dish: ");
-             String mainDish = sc.nextLine();
+            String mainDish = sc.nextLine();
             menu.setMainDish(mainDish);
             System.out.print("Enter price: ");
-             double price = sc.nextDouble();
+            double price = sc.nextDouble();
             menu.setPrice(price);
             System.out.print("Enter available count:");
-             int availableCount = sc.nextInt();
+            int availableCount = sc.nextInt();
             sc.nextLine();
             menu.setAvailableCount(availableCount);
             System.out.println("Menu Updated");
@@ -62,7 +65,7 @@ public class Receiver {
         }
     }
 
-    public void showMenu( ArrayList<Menu> menuss) {
+    public void showMenu(ArrayList<Menu> menuss) {
         for (int i = 0; i < menus.size(); i++) {
             System.out.println();
             System.out.println(menus.get(i));
@@ -70,11 +73,11 @@ public class Receiver {
         }
     }
 
-    public void makeOrder( ArrayList<Menu> menuss,  ArrayList<Order> orders) {
+    public void makeOrder(ArrayList<Menu> menuss, ArrayList<Order> orderss) {
         System.out.println();
         System.out.println("Place Order");
         System.out.print("Chinese or Western (c | w):");
-         String input = sc.nextLine();
+        String input = sc.nextLine();
         String teaType = "";
         String side = "";
         Order order;
@@ -96,9 +99,10 @@ public class Receiver {
                     lunchSet.setDrink(new OolongTea(false));
                 }
                 System.out.print("Staff Number:");
-                 int staffNum = sc.nextInt();
+                int staffNum = sc.nextInt();
+                sc.nextLine();
                 System.out.print("Office Location:");
-                 int officeLocation = sc.nextInt();
+                int officeLocation = sc.nextInt();
                 sc.nextLine();
                 order = new Order(lunchSet, staffNum, officeLocation);
             } else {
@@ -134,9 +138,10 @@ public class Receiver {
                     lunchSet.setDrink(new Coffee(false));
                 }
                 System.out.print("Staff Number:");
-                 int staffNum = sc.nextInt();
+                int staffNum = sc.nextInt();
+                sc.nextLine();
                 System.out.print("Office Location:");
-                 int officeLocation = sc.nextInt();
+                int officeLocation = sc.nextInt();
                 sc.nextLine();
                 order = new Order(lunchSet, staffNum, officeLocation);
             } else {
@@ -147,6 +152,7 @@ public class Receiver {
             System.out.println("Invalid Option!");
             return;
         }
+        ArrayList<Order> orders = new ArrayList<Order>(o.getOrders());
         orders.add(order);
         menu.setAvailableCount(menu.getAvailableCount() - 1);
         System.out.println("Order Placed");
@@ -156,7 +162,7 @@ public class Receiver {
 
     }
 
-    public void listOutstandingOrders( ArrayList<Order> orders) {
+    public void listOutstandingOrders(ArrayList<Order> orderss) {
         System.out.println();
         System.out.println("Outstanding Orders");
         for (int i = 0; i < o.getOrders().size(); i++) {
@@ -167,15 +173,15 @@ public class Receiver {
         System.out.println();
     }
 
-    public void completeOrders( ArrayList<Order> orders) {
+    public void completeOrders(ArrayList<Order> orderss) {
         System.out.println();
         System.out.println("Complete Orders");
-        if (orders.size() > 0) {
-            orders.get(0).setOrderCompleted(true);
-            System.out.println(orders.remove(0));
+        if (o.getOrders().size() > 0) {
+            o.getOrders().get(0).setOrderCompleted(true);
+            System.out.println(o.getOrders().remove(0));
             System.out.println("Order marked as done");
         }
-        o.setOrders(orders);
+        o.setOrders(o.getOrders());
         ordersMementos.add(o.saveToMemento());
 
     }
