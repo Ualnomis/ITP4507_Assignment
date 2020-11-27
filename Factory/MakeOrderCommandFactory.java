@@ -8,7 +8,7 @@ public class MakeOrderCommandFactory extends CommandFactory {
         super.setReceiver(receiver);
     }
     public Command createCommand() {
-        return new MakeOrderCommand(super.getReceiver(), super.getMenus(), super.getOrders());
+        return new MakeOrderCommand(super.getReceiver());
     }
 }
 

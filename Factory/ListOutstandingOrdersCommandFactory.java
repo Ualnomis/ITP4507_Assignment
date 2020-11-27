@@ -11,6 +11,6 @@ public class ListOutstandingOrdersCommandFactory extends CommandFactory {
         super.setReceiver(receiver);
     }
     public Command createCommand() {
-        return new ListOutstandingOrdersCommand(super.getReceiver(), super.getOrders());
+        return new ListOutstandingOrdersCommand(super.getReceiver());
     }
 }

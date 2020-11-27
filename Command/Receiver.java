@@ -17,17 +17,17 @@ public class Receiver {
     private OrdersOriginator o = new OrdersOriginator();
     private ArrayList<OrdersOriginator.OrdersMemento> ordersMementos = new ArrayList<OrdersOriginator.OrdersMemento>();
     private Scanner sc;
-    private ArrayList<Menu> menus = new ArrayList<Menu>();
+    private ArrayList<Menu> menus;
     private MenuFactory menuFactory;
     private Menu chineseMenu;
     private Menu westernMenu;
-
 
     public Receiver() {
     }
 
     public Receiver(Scanner sc) {
         this.sc = sc;
+        menus = new ArrayList<Menu>();
         menuFactory = new ChineseStyleLunchSetMenuFactory();
         chineseMenu = menuFactory.createMenu();
         menus.add(chineseMenu);

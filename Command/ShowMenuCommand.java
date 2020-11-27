@@ -15,6 +15,9 @@ public class ShowMenuCommand implements Command {
         this.receiver = receiver;
     }
 
+    public ShowMenuCommand() {
+    }
+
     public ShowMenuCommand(Receiver receiver) {
         this.receiver = receiver;
     }

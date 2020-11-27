@@ -10,6 +10,6 @@ public class CompleteOrderCommandFactory extends CommandFactory {
     }
 
     public Command createCommand() {
-        return new CompleteOrderCommand(super.getReceiver(), super.getOrders());
+        return new CompleteOrderCommand(super.getReceiver());
     }
 }

@@ -24,4 +24,7 @@ public class MakeOrderCommand implements Command {
         receiver.makeOrder();
     }
 
+    public MakeOrderCommand(Receiver receiver) {
+        this.receiver = receiver;
+    }
 }

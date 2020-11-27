@@ -8,7 +8,7 @@ public class ShowMenuCommandFactory extends CommandFactory {
         super.setReceiver(receiver);
     }
     public Command createCommand() {
-        return new ShowMenuCommand(super.getReceiver(), super.getMenus());
+        return new ShowMenuCommand(super.getReceiver());
     }
 
 }

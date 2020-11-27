@@ -21,4 +21,7 @@ public class CompleteOrderCommand implements Command {
 
     public CompleteOrderCommand() {
     }
+    public CompleteOrderCommand(Receiver receiver) {
+        this.receiver = receiver;
+    }
 }
