@@ -9,7 +9,7 @@ public class CompleteOrderCommand implements Command {
     private ArrayList<Order> orders;
 
     public void execute() {
-        receiver.completeOrders();
+        receiver.completeOrders(orders);
     }
 
     public ArrayList<Order> getOrders() {

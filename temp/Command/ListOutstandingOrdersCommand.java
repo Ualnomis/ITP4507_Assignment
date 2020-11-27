@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import Order.Order;
 
-public class CompleteOrderCommand implements Command {
+public class ListOutstandingOrdersCommand implements Command {
     private Receiver receiver;
     private ArrayList<Order> orders;
 
     public void execute() {
-        receiver.completeOrders();
+        receiver.listOutstandingOrders(orders);
     }
 
     public ArrayList<Order> getOrders() {
@@ -28,11 +28,11 @@ public class CompleteOrderCommand implements Command {
         this.receiver = receiver;
     }
 
-    public CompleteOrderCommand(Receiver receiver, ArrayList<Order> orders) {
-        this.receiver = receiver;
-        this.orders = orders;
+    public ListOutstandingOrdersCommand() {
     }
 
-    public CompleteOrderCommand() {
+    public ListOutstandingOrdersCommand(Receiver receiver, ArrayList<Order> orders) {
+        this.receiver = receiver;
+        this.orders = orders;
     }
 }

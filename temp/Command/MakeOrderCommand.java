@@ -39,7 +39,7 @@ public class MakeOrderCommand implements Command {
     }
 
     public void execute() {
-        receiver.makeOrder(menus);
+        receiver.makeOrder(menus, orders);
     }
 
     public MakeOrderCommand(Receiver receiver, ArrayList<Menu> menus, ArrayList<Order> orders) {

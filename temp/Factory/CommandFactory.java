@@ -1,19 +1,17 @@
-package Command;
+package Factory;
 
 import java.util.ArrayList;
 
+import Command.*;
 import Menu.Menu;
 import Order.Order;
 
-
-public class MakeOrderCommand implements Command {
+public abstract class CommandFactory {
     private Receiver receiver;
     private ArrayList<Menu> menus;
     private ArrayList<Order> orders;
 
-    public Receiver getReceiver() {
-        return receiver;
-    }
+    public abstract Command createCommand();
 
     public ArrayList<Order> getOrders() {
         return orders;
@@ -23,7 +21,7 @@ public class MakeOrderCommand implements Command {
         this.orders = orders;
     }
 
-    public ArrayList<Menu> getLunchSets() {
+    public ArrayList<Menu> getMenus() {
         return menus;
     }
 
@@ -31,21 +29,25 @@ public class MakeOrderCommand implements Command {
         this.menus = menus;
     }
 
+    public Receiver getReceiver() {
+        return this.receiver;
+    }
+
     public void setReceiver(Receiver receiver) {
         this.receiver = receiver;
     }
 
-    public MakeOrderCommand() {
+    public CommandFactory(Receiver receiver) {
+        this.receiver = receiver;
     }
 
-    public void execute() {
-        receiver.makeOrder(menus);
+    public CommandFactory() {
     }
 
-    public MakeOrderCommand(Receiver receiver, ArrayList<Menu> menus, ArrayList<Order> orders) {
+    public CommandFactory(Receiver receiver, ArrayList<Menu> menus, ArrayList<Order> orders) {
         this.receiver = receiver;
         this.menus = menus;
         this.orders = orders;
     }
-}
 
+}
