@@ -1,17 +1,15 @@
 package Command;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 import Factory.*;
 import LunchSet.*;
 import LunchSet.Drink.*;
 import LunchSet.Side.*;
-import LunchSet.Soup.ChineseSoup;
-import LunchSet.Soup.WesternSoup;
-import Memento.OrdersOriginator;
-import Menu.Menu;
-import Order.Order;
+import LunchSet.Soup.*;
+import Memento.*;
+import Menu.*;
+import Order.*;
 
 public class Receiver {
     private OrdersOriginator o = new OrdersOriginator();
@@ -187,6 +185,7 @@ public class Receiver {
 
     public void cancelOrders() {
         boolean found = false;
+        o.restoreFromMemento(ordersMementos.get(ordersMementos.size() - 1));
         ArrayList<Order> canceledOrders = new ArrayList<Order>(o.getOrders());
 
         System.out.print("Input the number: ");

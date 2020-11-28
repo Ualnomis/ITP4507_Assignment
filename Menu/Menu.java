@@ -1,6 +1,6 @@
 package Menu;
 
-import LunchSet.MainDish;
+import LunchSet.*;
 
 public abstract class Menu {
     private MainDish mainDish;
@@ -29,12 +29,6 @@ public abstract class Menu {
 
     public void setMainDish(String name) {
         this.mainDish.setName(name);
-    }
-
-    public Menu(double price, int availableCount) {
-        this.mainDish = new MainDish();
-        this.price = price;
-        this.availableCount = availableCount;
     }
 
     public Menu() {

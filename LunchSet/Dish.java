@@ -4,7 +4,7 @@ public abstract class Dish {
     private String name;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {

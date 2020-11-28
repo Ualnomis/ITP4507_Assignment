@@ -2,8 +2,6 @@ import java.util.*;
 
 import Command.*;
 import Factory.*;
-import Menu.*;
-import Order.Order;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +9,6 @@ public class Main {
         String input = "";
         Command command;
         CommandFactory factory = null;
-        MenuFactory menuFactory;
         Invoker invoker = new Invoker();
         Receiver receiver = new Receiver(sc);
 
