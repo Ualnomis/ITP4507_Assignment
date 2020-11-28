@@ -1,7 +1,7 @@
 package LunchSet.Drink;
 
 public abstract class Drink {
-    private boolean isHot;
+    private boolean isHot; // drink is how of not
 
     public Drink(boolean isHot) {
         this.isHot = isHot;

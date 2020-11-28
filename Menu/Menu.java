@@ -3,9 +3,9 @@ package Menu;
 import LunchSet.*;
 
 public abstract class Menu {
-    private MainDish mainDish;
-    private double price;
-    private int availableCount;
+    private MainDish mainDish; // main dish of the menu
+    private double price; // price of the menu lunchset
+    private int availableCount; // amount of the menu lunchset
 
     public MainDish getMainDish() {
         return mainDish;

@@ -3,10 +3,10 @@ package Order;
 import LunchSet.LunchSet;
 
 public class Order {
-    private LunchSet lunchSet;
-    private int staffNum;
-    private int officeNum;
-    private boolean isOrderCompleted;
+    private LunchSet lunchSet; // which lunchset ordered
+    private int staffNum; // staff who order the lunchset
+    private int officeNum; // the location office number of the staff
+    private boolean isOrderCompleted; // store order complete status
 
     public LunchSet getLunchSet() {
         return lunchSet;

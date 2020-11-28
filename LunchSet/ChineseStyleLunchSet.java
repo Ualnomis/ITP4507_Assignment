@@ -7,6 +7,7 @@ public class ChineseStyleLunchSet extends LunchSet {
         return super.getMainDish().getName() + ", " + super.getSoup() + ", " + super.getDrink();
     }
 
+    // type of the lunch set
     public String getLunchSetType() {
         return "C";
     }

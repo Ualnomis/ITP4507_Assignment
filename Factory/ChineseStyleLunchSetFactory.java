@@ -4,6 +4,6 @@ import LunchSet.*;
 
 public class ChineseStyleLunchSetFactory extends LunchSetFactory {
     public LunchSet createLunchSet() {
-        return new ChineseStyleLunchSet();
+        return new ChineseStyleLunchSet(); // create chinese style lunchset
     }
 }

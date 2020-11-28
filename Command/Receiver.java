@@ -65,8 +65,8 @@ public class Receiver {
             menu.setAvailableCount(availableCount);
             System.out.println("Menu Updated");
             System.out.println();
-        menusOriginator.setMenus(menusOriginator.getMenus());
-        menusMementos.push(menusOriginator.saveToMemento());
+            menusOriginator.setMenus(menusOriginator.getMenus());
+            menusMementos.push(menusOriginator.saveToMemento());
         }
     }
 

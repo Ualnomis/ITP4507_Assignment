@@ -5,7 +5,7 @@ import java.util.*;
 import Menu.*;
 
 public class MenusOriginator {
-    private ArrayList<Menu> menus;
+    private ArrayList<Menu> menus; // store different menu
 
     public ArrayList<Menu> getMenus() {
         return this.menus;

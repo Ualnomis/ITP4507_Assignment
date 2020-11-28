@@ -4,7 +4,7 @@ import java.util.*;
 import Order.Order;
 
 public class OrdersOriginator {
-    private ArrayList<Order> orders;
+    private ArrayList<Order> orders; // store all ordered order from staff
 
     public ArrayList<Order> getOrders() {
         return orders;

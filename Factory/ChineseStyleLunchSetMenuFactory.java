@@ -5,6 +5,6 @@ import Menu.Menu;
 
 public class ChineseStyleLunchSetMenuFactory extends MenuFactory {
     public Menu createMenu() {
-        return new ChineseStyleLunchSetMenu();
+        return new ChineseStyleLunchSetMenu(); // create chinese style lucnhset menu
     }
 }

@@ -1,16 +1,13 @@
 package Factory;
 
-import java.util.ArrayList;
 import Command.*;
-import Menu.Menu;
-import Order.Order;
 
 public class ListOutstandingOrdersCommandFactory extends CommandFactory {
     public ListOutstandingOrdersCommandFactory() {}
     public ListOutstandingOrdersCommandFactory(Receiver receiver) {
-        super.setReceiver(receiver);
+        super.setReceiver(receiver); // receiver of command use
     }
     public Command createCommand() {
-        return new ListOutstandingOrdersCommand(super.getReceiver());
+        return new ListOutstandingOrdersCommand(super.getReceiver()); // create list outstanding orders command with receiver
     }
 }

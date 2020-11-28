@@ -5,6 +5,6 @@ import Menu.WesternStyleLunchSetMenu;
 
 public class WesternStyleLunchSetMenuFactory extends MenuFactory {
    public Menu createMenu() {
-        return new WesternStyleLunchSetMenu();
+       return new WesternStyleLunchSetMenu(); // create western style lunch set menu
     }
 }

@@ -4,9 +4,9 @@ import LunchSet.Drink.*;
 import LunchSet.Soup.*;
 
 public abstract class LunchSet {
-    private MainDish mainDish;
-    private Drink drink;
-    private Soup soup;
+    private MainDish mainDish; // lunch set main dish
+    private Drink drink; // lunch set drink
+    private Soup soup; // lunch set soup
 
     public abstract String toString();
 

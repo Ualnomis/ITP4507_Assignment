@@ -9,6 +9,7 @@ public class ChineseStyleLunchSetMenu extends Menu {
         super(mainDishName, price, availableCount);
     }
 
+    // copy object
     public Menu clone() {
         return new ChineseStyleLunchSetMenu(super.getMainDish().getName(), super.getPrice(), super.getAvailableCount());
     }

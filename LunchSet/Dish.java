@@ -1,5 +1,6 @@
 package LunchSet;
 
+// dish of the lunchset
 public abstract class Dish {
     private String name;
 

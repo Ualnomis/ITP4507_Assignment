@@ -6,8 +6,9 @@ import Command.*;
 import Menu.Menu;
 import Order.Order;
 
+// command factory
 public abstract class CommandFactory {
-    private Receiver receiver;
+    private Receiver receiver; // receiver for command use
 
     public abstract Command createCommand();
 

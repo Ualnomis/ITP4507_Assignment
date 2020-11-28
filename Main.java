@@ -5,25 +5,31 @@ import Factory.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String input = "";
-        Command command;
-        CommandFactory factory = null;
-        Invoker invoker = new Invoker();
-        Receiver receiver = new Receiver(sc);
+        Scanner sc = new Scanner(System.in); // Scanner
+        String input = ""; // user input
+        Command command; // store different command
+        CommandFactory factory = null; // store different command factory
+        Invoker invoker = new Invoker(); // invoker
+        Receiver receiver = new Receiver(sc); // receiver
+        boolean done = false; // check if the system finish the work or not
 
-
-        while (sc.hasNextLine()) {
+        // while not done
+        while (!done) {
             // ask user input
             System.out.println("Please enter command: [e | s | p | c | l | n | d | q]");
             System.out.println("e = Edit menu, s = Show menu, p = Place order, c = Cancel order,");
             System.out.println("l = List orders, d = order is Done, q = Quit");
 
             // get user input
-            input = sc.nextLine();
-            // input q and exit the system
-            if ("q".equals(input)) {
-                System.exit(0);
+            if (sc.hasNextLine()) {
+                input = sc.nextLine();
+            } else {
+                done = true;
+            }
+
+            // check what function user input
+            if ("q".equals(input)) { // input q and exit the system
+                System.exit(0); // exit the system
             } else if ("e".equals(input)) { // input e to edit menu
                 factory = new EditMenuCommandFactory(receiver); // create edit menu command factory
             } else if ("s".equals(input)) { // input s to show menu
@@ -34,9 +40,8 @@ public class Main {
                 factory = new CancelOrderCommandFactory(receiver); // create cancel order command factory
             } else if ("l".equals(input)) { // input l to list outstanding orders
                 factory = new ListOutstandingOrdersCommandFactory(receiver); // create list outstanding orders command
-                // factory
+                                                                             // factory
             } else if ("n".equals(input)) {
-
             } else if ("d".equals(input)) { // input d to finish the order
                 factory = new CompleteOrderCommandFactory(receiver); // create complete order command factory
             } else { // if input error
@@ -48,7 +53,7 @@ public class Main {
                 command = factory.createCommand(); // create edit menu command
                 invoker.setCommand(command); // set the target command to control
                 invoker.invoke(); // execute the command
-                factory = null;
+                factory = null; // set factory to null
             }
         }
     }
