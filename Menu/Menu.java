@@ -34,4 +34,13 @@ public abstract class Menu {
     public Menu() {
         this.mainDish = new MainDish();
     }
+
+    public Menu(String mainDishName, double price, int availableCount) {
+        this.mainDish = new MainDish();
+        this.mainDish.setName(mainDishName);
+        this.price = price;
+        this.availableCount = availableCount;
+    }
+
+    public abstract Menu clone();
 }

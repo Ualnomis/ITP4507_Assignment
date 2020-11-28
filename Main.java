@@ -13,7 +13,7 @@ public class Main {
         Receiver receiver = new Receiver(sc);
 
 
-        for (;;) {
+        while (sc.hasNextLine()) {
             // ask user input
             System.out.println("Please enter command: [e | s | p | c | l | n | d | q]");
             System.out.println("e = Edit menu, s = Show menu, p = Place order, c = Cancel order,");

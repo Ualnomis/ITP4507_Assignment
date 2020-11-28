@@ -11,7 +11,7 @@ public class OrdersOriginator {
     }
 
     public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
+        this.orders = new ArrayList<Order>(orders);
     }
 
     public OrdersMemento saveToMemento() {
