@@ -11,10 +11,9 @@ public class Main {
         CommandFactory factory = null; // store different command factory
         Invoker invoker = new Invoker(); // invoker
         Receiver receiver = new Receiver(sc); // receiver
-        boolean done = false; // check if the system finish the work or not
 
         // while not done
-        while (!done) {
+        for (;;) {
             // ask user input
             System.out.println("Please enter command: [e | s | p | c | l | n | d | q]");
             System.out.println("e = Edit menu, s = Show menu, p = Place order, c = Cancel order,");
@@ -24,7 +23,7 @@ public class Main {
             if (sc.hasNextLine()) {
                 input = sc.nextLine();
             } else {
-                done = true;
+                return;
             }
 
             // check what function user input
