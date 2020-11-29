@@ -1,9 +1,5 @@
 package Command;
 
-import java.util.ArrayList;
-
-import Menu.Menu;
-
 public class EditMenuCommand implements Command {
     private Receiver receiver;
 

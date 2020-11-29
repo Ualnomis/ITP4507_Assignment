@@ -112,6 +112,7 @@ public class Receiver {
                 order = new Order(lunchSet, staffNum, officeLocation);
             } else {
                 System.out.println("Sold Out!");
+                System.out.println();
                 return;
             }
         } else if ("w".equals(input)) {
@@ -151,10 +152,12 @@ public class Receiver {
                 order = new Order(lunchSet, staffNum, officeLocation);
             } else {
                 System.out.println("Sold Out!");
+                System.out.println();
                 return;
             }
         } else {
             System.out.println("Invalid Option!");
+            System.out.println();
             return;
         }
         ArrayList<Order> orders = new ArrayList<Order>(o.getOrders());
@@ -186,6 +189,7 @@ public class Receiver {
             o.getOrders().get(0).setOrderCompleted(true);
             System.out.println(o.getOrders().remove(0));
             System.out.println("Order marked as done");
+            System.out.println();
         }
         menusOriginator.setMenus(menusOriginator.getMenus());
         menusMementos.push(menusOriginator.saveToMemento());
@@ -209,9 +213,12 @@ public class Receiver {
                 menusOriginator.restoreFromMemento(menusMementos.peek());
                 o.setOrders(canceledOrders);
                 ordersMementos.add(o.saveToMemento());
+                System.out.println("Order Cancelled");
+                System.out.println();
                 return;
             }
         }
         System.out.println("Staff Number Not Found");
+        System.out.println();
     }
 }
