@@ -1,12 +1,14 @@
 package Order;
 
-import LunchSet.LunchSet;
+import LunchSet.*;
+import Menu.*;
 
 public class Order {
     private LunchSet lunchSet; // which lunchset ordered
     private int staffNum; // staff who order the lunchset
     private int officeNum; // the location office number of the staff
     private boolean isOrderCompleted; // store order complete status
+    private Menu menu;
 
     public LunchSet getLunchSet() {
         return lunchSet;
@@ -40,6 +42,14 @@ public class Order {
         this.lunchSet = lunchSet;
     }
 
+    public Menu getMenu() {
+        return this.menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
     public String toString() {
         return lunchSet.getLunchSetType() + ": " + staffNum + ", " + officeNum + ", " + lunchSet;
     }
@@ -48,5 +58,16 @@ public class Order {
         this.lunchSet = lunchSet;
         this.staffNum = staffNum;
         this.officeNum = officeNum;
+    }
+
+    public Order(LunchSet lunchSet, int staffNum, int officeNum, Menu menu) {
+        this.lunchSet = lunchSet;
+        this.staffNum = staffNum;
+        this.officeNum = officeNum;
+        this.menu = menu;
+    }
+
+    public void cancel() {
+        this.menu.setAvailableCount(this.menu.getAvailableCount() + 1);
     }
 }
