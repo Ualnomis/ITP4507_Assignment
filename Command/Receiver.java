@@ -73,7 +73,7 @@ public class Receiver {
     public void showMenu() {
         for (int i = 0; i < menusOriginator.getMenus().size(); i++) {
             System.out.println();
-            System.out.println(menus.get(i));
+            System.out.println(menusOriginator.getMenus().get(i));
             System.out.println();
         }
     }
@@ -192,8 +192,6 @@ public class Receiver {
             System.out.println("Order marked as done");
         }
         System.out.println();
-        menusOriginator.setMenus(menusOriginator.getMenus());
-        menusMementos.push(menusOriginator.saveToMemento());
         o.setOrders(o.getOrders());
         ordersMementos.add(o.saveToMemento());
 
