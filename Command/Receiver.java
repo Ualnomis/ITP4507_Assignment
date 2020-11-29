@@ -184,13 +184,14 @@ public class Receiver {
     }
 
     public void completeOrders() {
+        System.out.println();
         System.out.println("Complete Orders");
         if (o.getOrders().size() > 0) {
             o.getOrders().get(0).setOrderCompleted(true);
             System.out.println(o.getOrders().remove(0));
             System.out.println("Order marked as done");
-            System.out.println();
         }
+        System.out.println();
         menusOriginator.setMenus(menusOriginator.getMenus());
         menusMementos.push(menusOriginator.saveToMemento());
         o.setOrders(o.getOrders());
