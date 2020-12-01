@@ -2,15 +2,12 @@ package Menu;
 
 public class WesternStyleLunchSetMenu extends Menu {
 
+    // no args constructor
     public WesternStyleLunchSetMenu() {}
 
-
+    // constructor
     public WesternStyleLunchSetMenu(String mainDishName, double price, int availableCount) {
         super(mainDishName, price, availableCount);
-    }
-    // copy object
-    public Menu clone() {
-        return new WesternStyleLunchSetMenu(super.getMainDish().getName(), super.getPrice(), super.getAvailableCount());
     }
 
     public String toString() {

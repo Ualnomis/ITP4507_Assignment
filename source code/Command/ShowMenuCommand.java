@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Menu.Menu;
 
 public class ShowMenuCommand implements Command {
-    private Receiver receiver;
+    private Receiver receiver; // reciever
 
     public Receiver getReceiver() {
         return receiver;
@@ -15,6 +15,7 @@ public class ShowMenuCommand implements Command {
         this.receiver = receiver;
     }
 
+    // no args constructor
     public ShowMenuCommand() {
     }
 
@@ -23,7 +24,7 @@ public class ShowMenuCommand implements Command {
     }
 
     public void execute() {
-        receiver.showMenu();
+        receiver.showMenu(); // call receiver showMenu() method to show menu
     }
 
 }

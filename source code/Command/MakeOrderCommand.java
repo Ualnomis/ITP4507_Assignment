@@ -7,7 +7,7 @@ import Order.Order;
 
 
 public class MakeOrderCommand implements Command {
-    private Receiver receiver;
+    private Receiver receiver; // receiver
 
     public Receiver getReceiver() {
         return receiver;
@@ -17,11 +17,12 @@ public class MakeOrderCommand implements Command {
         this.receiver = receiver;
     }
 
+    // no args constructor
     public MakeOrderCommand() {
     }
 
     public void execute() {
-        receiver.makeOrder();
+        receiver.makeOrder(); // call receiver makeOrder() method to make order
     }
 
     public MakeOrderCommand(Receiver receiver) {

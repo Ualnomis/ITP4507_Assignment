@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import Order.Order;
 
 public class CompleteOrderCommand implements Command {
-    private Receiver receiver;
+    private Receiver receiver; // receiver
 
     public void execute() {
-        receiver.completeOrders();
+        receiver.completeOrder(); // call receiver completeOrder() method to complete order
     }
 
     public Receiver getReceiver() {

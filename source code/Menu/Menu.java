@@ -2,6 +2,7 @@ package Menu;
 
 import LunchSet.*;
 
+// menu
 public abstract class Menu {
     private MainDish mainDish; // main dish of the menu
     private double price; // price of the menu lunchset
@@ -42,5 +43,4 @@ public abstract class Menu {
         this.availableCount = availableCount;
     }
 
-    public abstract Menu clone();
 }

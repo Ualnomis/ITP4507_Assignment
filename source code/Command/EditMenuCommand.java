@@ -1,7 +1,7 @@
 package Command;
 
 public class EditMenuCommand implements Command {
-    private Receiver receiver;
+    private Receiver receiver; // receiver
 
     public Receiver getReceiver() {
         return receiver;
@@ -16,7 +16,7 @@ public class EditMenuCommand implements Command {
     }
 
     public void execute() {
-        receiver.editMenu();
+        receiver.editMenu(); // call receiver editMenu() to edit menu
     }
 
 }

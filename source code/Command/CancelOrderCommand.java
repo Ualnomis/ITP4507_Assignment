@@ -1,10 +1,10 @@
 package Command;
 
 public class CancelOrderCommand implements Command {
-    private Receiver receiver;
+    private Receiver receiver; // receiver to execute command
 
     public void execute() {
-        receiver.cancelOrders();
+        receiver.cancelOrder(); // call receiver cancelOrder() method to cancel order
     }
 
     public Receiver getReceiver() {
