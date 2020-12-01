@@ -44,7 +44,9 @@ public class Main {
             } else if ("d".equals(input)) { // input d to finish the order
                 factory = new CompleteOrderCommandFactory(receiver); // create complete order command factory
             } else { // if input error
+                System.out.println();
                 System.out.println("Invalid Option!");
+                System.out.println();
                 factory = null;
             }
 
