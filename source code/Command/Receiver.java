@@ -252,7 +252,9 @@ public class Receiver {
 
         try {
             // get staff number
-            System.out.print("Input the number: ");
+            System.out.println();
+            System.out.println("Cancel Order");
+            System.out.print("Staff number: ");
             int staffNum = sc.nextInt();
             sc.nextLine();
             // loop through orders to cancel the staff order
