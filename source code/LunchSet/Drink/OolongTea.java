@@ -5,6 +5,6 @@ public class OolongTea extends Drink {
         super(isHot);
     }
     public String toString() {
-        return super.isHotOrCold() + " Oolong Tea";
+        return super.isHotOrCold() + " Tea";
     }
 }
