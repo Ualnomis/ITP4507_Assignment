@@ -1,4 +1,4 @@
-cd ../"source code"
+cd ../src
 javac -d ../bin @sources.txt
 cd ../bin
 java Main
